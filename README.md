@@ -16,9 +16,11 @@ Python and Visual Component Tool
 <img width="1144" height="412" alt="image" src="https://github.com/user-attachments/assets/6bf357bd-7ba2-4908-8c93-ef74e4747a4f" />
 
 # Program
+```
 Name: Mohana Priya D
 Reg no: 25016734
 Slot name: 3P1-1
+```
 ```
 import numpy as np
 import math
@@ -66,6 +68,7 @@ https://colab.research.google.com/drive/1cg3jwmQeAM4HDvoR9lu1m6RVopc1mMlV?usp=sh
 
 
 # Output
+```
 9 9 9 8 8 8 7 7 5 6 3
 X P(X=x)  Obs.Fr  Exp.Fr  xi
 ------------------------------
@@ -83,6 +86,7 @@ X P(X=x)  Obs.Fr  Exp.Fr  xi
 Calculated value of Chi square is 6.5026
 Table value of Chi square at 1% level is 21.6660
 The given data can be fitted in Poisson Distribution at 1% LOS
+```
 
 
 # Result
