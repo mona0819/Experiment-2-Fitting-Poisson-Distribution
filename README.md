@@ -16,13 +16,73 @@ Python and Visual Component Tool
 <img width="1144" height="412" alt="image" src="https://github.com/user-attachments/assets/6bf357bd-7ba2-4908-8c93-ef74e4747a4f" />
 
 # Program
-
+Name: Mohana Priya D
+Reg no: 25016734
+Slot name: 3P1-1
+```
+import numpy as np
+import math
+import scipy.stats
+L=[int(i)for i in input().split()]
+N=len(L)
+M=max(L)
+X=list()
+f=list()
+for i in range(M+1):
+  c=0
+  for j in range(N):
+    if L[j]==i:
+      c=c+1
+  f.append(c)
+  X.append(i)
+sf=np.sum(f)
+p=list()
+for i in range(M+1):
+  p.append(f[i] /sf)
+mean=np.inner(X,p)
+p=list()
+E=list()
+xi=list()
+print("X P(X=x)  Obs.Fr  Exp.Fr  xi")
+print("------------------------------")
+for x in range (M+1):
+  p.append(math.exp(-mean)*mean**x / math.factorial(x))
+  E.append(p[x]*sf) # Fixed this line as well. Previously it was p[x*sf] which seems like a typo.
+  xi.append(((f[x]-E[x])**2)/E[x]) # Corrected the chi-square term to (Obs - Exp)^2 / Exp
+  print("%2d  %.3f  %4d  %.2f  %.3f"%(x,p[x],f[x],E[x],xi[x]))
+print("-----------------------------")
+cal_chi2_sq=np.sum(xi)
+print(f"Calculated value of Chi square is {cal_chi2_sq:.4f}")
+table_chi2=scipy.stats.chi2.ppf(1-0.01,df=M)
+print(f"Table value of Chi square at 1% level is {table_chi2:.4f}")
+if cal_chi2_sq<table_chi2:
+  print("The given data can be fitted in Poisson Distribution at 1% LOS")
+else:
+  print("The given data cannot be fitted in Poisson Distribution at 1% LOS")
+```
+https://colab.research.google.com/drive/1cg3jwmQeAM4HDvoR9lu1m6RVopc1mMlV?usp=sharing
 
 
 
 
 # Output
-
+9 9 9 8 8 8 7 7 5 6 3
+X P(X=x)  Obs.Fr  Exp.Fr  xi
+------------------------------
+ 0  0.001     0  0.01  0.008
+ 1  0.005     0  0.06  0.060
+ 2  0.020     0  0.22  0.216
+ 3  0.047     1  0.52  0.453
+ 4  0.084     0  0.93  0.927
+ 5  0.121     1  1.33  0.083
+ 6  0.145     1  1.59  0.221
+ 7  0.149     2  1.64  0.081
+ 8  0.133     3  1.47  1.599
+ 9  0.106     3  1.17  2.854
+-----------------------------
+Calculated value of Chi square is 6.5026
+Table value of Chi square at 1% level is 21.6660
+The given data can be fitted in Poisson Distribution at 1% LOS
 
 
 # Result
